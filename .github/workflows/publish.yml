@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches:
-      - release
+      - main
 
 jobs:
   build:
@@ -27,20 +27,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: build
-
-    - name: Publish to Modrinth
-      uses: Apehum/mc-publish@v1.1
-      with:
-        modrinth-id: K1y8brkJ
-        modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-
-        loaders: |
-          fabric
-          forge
-        game-versions: |
-          1.19.2
-          1.19.3
-          1.19.4
         
     - name: Publish to GitHub
       uses: Apehum/mc-publish@v1.1
